@@ -3,8 +3,9 @@ import type { NextPage } from 'next'
 import { FieldValues, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { schema, Schema } from "../utils/validations/schema";
-import { LabeledInput } from '../components/LabeledInput';
-import Router from 'next/router';
+import { InputField } from '../components/Form/InputField';
+import { pagesPath } from '../utils/$path';
+import router from 'next/router';
 
 const Home: NextPage = () => {
 
@@ -26,7 +27,7 @@ const Home: NextPage = () => {
     console.log(data);
     reset();
 
-    Router.push('/test');
+    router.push(pagesPath.users.$url());
   };
 
   return (
@@ -39,13 +40,12 @@ const Home: NextPage = () => {
           <FormLabel htmlFor='password'>Password</FormLabel>
           <Input id='password' type='password' {...register('password')} />
           <Text color='red.400'>{errors.password && errors.password.message}</Text>
-
-          {/* <LabeledInput 
-            name='email'
-            label='Email'
+          <InputField 
+            label='email'
             type='email'
-            errorMessage={errors.email && errors.email.message}
-          /> */}
+            registration={register('email')}
+            // error={formState.errors['firstName']}
+          />
           <Button type='submit'>登録</Button>
         </form>
       </VStack>
