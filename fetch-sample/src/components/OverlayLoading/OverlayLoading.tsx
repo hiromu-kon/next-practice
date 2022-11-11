@@ -15,8 +15,6 @@ export const OverlayLoading = (props: Props) => {
 
   const toastMessageStatus = useSelector((state: RootState) => state.toastMessage.status);
 
-  console.log(toastMessageStatus);
-
   return (
     <>
       {toastMessageStatus ? (
