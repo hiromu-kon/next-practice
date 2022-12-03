@@ -1,5 +1,9 @@
 import MuiTextField from '@mui/material/TextField';
 
-export const TextField = () => {
-  return <MuiTextField />
+type TextFieldProps = {
+  id: string;
+}
+
+export const TextField = (props: TextFieldProps) => {
+  return <MuiTextField {...props} />
 }
